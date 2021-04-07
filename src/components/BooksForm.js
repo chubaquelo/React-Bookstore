@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { addBook } from '../actions';
 
-export default function BooksForm() {
+function BooksForm() {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
 
@@ -30,10 +32,21 @@ export default function BooksForm() {
           <option value="sci-fi">Sci-fi</option>
           <option value="learning">Learning</option>
         </select>
-        <button type="button" onClick={() => {}}>
+        <button
+          type="button"
+          onClick={() => {
+            addBook({ title, category, id: Math.floor(Math.random()) * 1000 });
+          }}
+        >
           Create Book
         </button>
       </form>
     </div>
   );
 }
+
+const mapDispatchToProps = dispatch => ({
+  addBook: bookToAdd => dispatch(addBook(bookToAdd)),
+});
+
+export default connect(null, mapDispatchToProps)(BooksForm);
