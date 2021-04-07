@@ -21,6 +21,12 @@ function BooksForm({ dispatch }) {
     setCategory(event.target.value);
   }
 
+  function handleSubmit() {
+    dispatch(
+      addBook({ title, category, id: Math.floor(Math.random() * 1000) }),
+    );
+  }
+
   return (
     <div>
       <form className="bg-blue-200">
@@ -35,11 +41,7 @@ function BooksForm({ dispatch }) {
         </select>
         <button
           type="button"
-          onClick={() => {
-            dispatch(
-              addBook({ title, category, id: Math.floor(Math.random() * 1000) }),
-            );
-          }}
+          onClick={handleSubmit}
         >
           Create Book
         </button>
