@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function BooksForm() {
-    return (
-        <div>
-            This is the BooksForm
-        </div>
-    )
+  return (
+    <div>
+      This is the BooksForm
+    </div>
+  );
 }

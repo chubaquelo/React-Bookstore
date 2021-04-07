@@ -1,6 +1,8 @@
-export default bookReducer = (state=[], action)=> {
-    switch (action.type) {
+const bookReducer = (state = [], action) => {
+  switch (action.type) {
     default:
-         return state
-    }
-}
+      return state;
+  }
+};
+
+export default bookReducer;
