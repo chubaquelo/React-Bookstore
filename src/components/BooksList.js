@@ -1,16 +1,9 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
-export default function BooksList() {
-  // window.console.log(useSelector());
-  // const bookData = state
-
-  const bookData = [
-    { id: 1, title: 'one', category: 'cat' },
-    { id: 2, title: 'two', category: 'cat' },
-  ];
-
+function BooksList({ bookData }) {
   const books = bookData.map(book => (
     <tr key={book.id}>
       <Book id={book.id} title={book.title} category={book.category} />
@@ -34,3 +27,20 @@ export default function BooksList() {
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    bookData: state.bookReducer,
+  };
+}
+
+BooksList.propTypes = {
+  bookData: PropTypes.oneOfType(['string', 'array', 'object']),
+
+};
+
+BooksList.defaultProps = {
+  bookData: {},
+};
+
+export default connect(mapStateToProps, null)(BooksList);
