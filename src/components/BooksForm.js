@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addBook } from '../actions';
 
-function BooksForm({ dispatch }) {
+const BooksForm = ({ dispatch }) => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('action');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
@@ -13,19 +13,19 @@ function BooksForm({ dispatch }) {
     </option>
   ));
 
-  function handleChange(event) {
-    setTitle(event.target.value);
-  }
+  const handleChange = ({ target }) => {
+    setTitle(target.value);
+  };
 
-  function handleSelect(event) {
+  const handleSelect = event => {
     setCategory(event.target.value);
-  }
+  };
 
-  function handleSubmit() {
+  const handleSubmit = () => {
     dispatch(
       addBook({ title, category, id: Math.floor(Math.random() * 1000) }),
     );
-  }
+  };
 
   return (
     <div>
@@ -48,7 +48,7 @@ function BooksForm({ dispatch }) {
       </form>
     </div>
   );
-}
+};
 
 export default connect(null, null)(BooksForm);
 
