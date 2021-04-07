@@ -6,6 +6,12 @@ import { addBook } from '../actions';
 function BooksForm({ dispatch }) {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('action');
+  const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+  const categoryOptions = categories.map(category => (
+    <option key={category} value={category}>
+      {category}
+    </option>
+  ));
 
   function handleChange(event) {
     setTitle(event.target.value);
@@ -25,13 +31,7 @@ function BooksForm({ dispatch }) {
         </h1>
         <h2>{category}</h2>
         <select value={category} onChange={handleSelect}>
-          <option value="action">Action</option>
-          <option value="biography">Biography</option>
-          <option value="history">History</option>
-          <option value="horror">Horror</option>
-          <option value="kids">Kids</option>
-          <option value="sci-fi">Sci-fi</option>
-          <option value="learning">Learning</option>
+          {categoryOptions}
         </select>
         <button
           type="button"
