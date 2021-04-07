@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addBook } from '../actions';
 
-function BooksForm() {
+function BooksForm({ dispatch }) {
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('action');
 
   function handleChange(event) {
     setTitle(event.target.value);
@@ -35,7 +36,9 @@ function BooksForm() {
         <button
           type="button"
           onClick={() => {
-            addBook({ title, category, id: Math.floor(Math.random()) * 1000 });
+            dispatch(
+              addBook({ title, category, id: Math.floor(Math.random() * 1000) }),
+            );
           }}
         >
           Create Book
@@ -45,8 +48,12 @@ function BooksForm() {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  addBook: bookToAdd => dispatch(addBook(bookToAdd)),
-});
+export default connect(null, null)(BooksForm);
 
-export default connect(null, mapDispatchToProps)(BooksForm);
+BooksForm.propTypes = {
+  dispatch: PropTypes.func,
+};
+
+BooksForm.defaultProps = {
+  dispatch: () => {},
+};
