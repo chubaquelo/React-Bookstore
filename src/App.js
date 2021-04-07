@@ -5,7 +5,7 @@ import BooksForm from './components/BooksForm';
 export default function App() {
   return (
     <div>
-      <h1>Hi!</h1>
+      <h1 className="text-4xl">Hi!</h1>
       <BooksForm />
       <BooksList />
     </div>
