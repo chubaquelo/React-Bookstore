@@ -9,7 +9,6 @@ function BooksList({ bookData, dispatch }) {
     dispatch(removeBook(id));
   }
 
-  console.log(bookData);
   const books = bookData.map(book => (
     <tr key={book.id}>
       <Book
