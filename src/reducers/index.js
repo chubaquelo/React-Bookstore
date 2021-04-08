@@ -3,8 +3,8 @@ import bookReducer from './books';
 import filterReducer from './filter';
 
 const rootReducer = combineReducers({
-  bookReducer,
-  filterReducer,
+  book: bookReducer,
+  filter: filterReducer,
 });
 
 const store = createStore(rootReducer);

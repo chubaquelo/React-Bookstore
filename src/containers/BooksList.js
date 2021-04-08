@@ -10,7 +10,11 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
     dispatch(removeBook(id));
   }
 
-  const books = bookData.map(book => (
+  const filteredBookData = bookData.filter(book => (filterData === 'All'
+    ? true
+    : book.category === filterData));
+
+  const books = filteredBookData.map(book => (
     <tr key={book.id}>
       <Book
         id={book.id}
@@ -24,8 +28,6 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
   const handleFilter = ({ target }) => {
     dispatch(changeFilter(target.value));
   };
-
-  console.log(filterData);
 
   return (
     <div>
@@ -45,8 +47,8 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
 };
 
 const mapStateToProps = state => ({
-  bookData: state.bookReducer,
-  filterData: state.filterReducer,
+  bookData: state.book,
+  filterData: state.filter,
 });
 
 BooksList.propTypes = {

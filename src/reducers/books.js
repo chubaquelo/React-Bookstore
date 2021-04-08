@@ -2,8 +2,12 @@ const CREATE_BOOK = 'CREATE_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
 const bookData = [
-  { id: 1, title: 'one', category: 'cat' },
-  { id: 2, title: 'two', category: 'cat' },
+  { id: 1, title: 'Harry Potter I', category: 'Kids' },
+  { id: 2, title: 'Harry Potter II', category: 'Kids' },
+  { id: 3, title: 'Harry Potter III', category: 'Kids' },
+  { id: 4, title: 'Superman', category: 'Action' },
+  { id: 5, title: 'Frankestein', category: 'Horror' },
+  { id: 6, title: 'OVNI I', category: 'Sci-Fi' },
 ];
 
 const bookReducer = (state = bookData, action) => {

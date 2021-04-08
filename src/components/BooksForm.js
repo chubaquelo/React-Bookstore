@@ -5,7 +5,7 @@ import { addBook } from '../actions';
 
 const BooksForm = ({ dispatch }) => {
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('action');
+  const [category, setCategory] = useState('Action');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
   const categoryOptions = categories.map(category => (
     <option key={category} value={category}>
