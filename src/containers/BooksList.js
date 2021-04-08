@@ -32,7 +32,7 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
   return (
     <div>
       <CategoryFilter handleFilter={handleFilter} />
-      <section className="">
+      <section className="w-11/12 mx-auto">
         {books}
       </section>
     </div>

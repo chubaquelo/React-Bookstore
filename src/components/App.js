@@ -7,8 +7,8 @@ const App = () => (
   <>
     <Header />
     <div className="bg-gray-100 font-serif">
-      <BooksForm />
       <BooksList />
+      <BooksForm />
     </div>
   </>
 );
