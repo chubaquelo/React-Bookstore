@@ -6,8 +6,6 @@ Magic-books Inc. is a fictional company based in Germany. We build the front-end
 ## LIVE DEMO
 [Click Here to See Live Demo](https://bookstore-esteban-sergio.herokuapp.com/)
 
-![Screenshot]()
-
 ## Built With
 
 - HTML + CSS
