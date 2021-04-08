@@ -35,7 +35,7 @@ const BooksForm = ({ dispatch }) => {
   };
 
   return (
-    <div className="bg-gray-100 font-serif w-8/12 mx-auto pb-24">
+    <div className="bg-gray-100 font-serif w-9/12 mx-auto p-5 pb-24">
       <hr className="my-8" />
       <h3 className="text-gray-400 text-2xl font-bold font-sans mb-4">
         ADD NEW BOOK
@@ -59,15 +59,15 @@ const BooksForm = ({ dispatch }) => {
           onChange={handleSelect}
           className="w-2/12 text-2xl cursor-pointer"
         >
-          <option value="1" selected disabled>
-            Select Category
+          <option value="1" className="text-lg" selected disabled>
+            Select a Category...
           </option>
           {categoryOptions}
         </select>
         <button
           type="button"
           onClick={handleSubmit}
-          className="w-2/12 text-2xl"
+          className="w-2/12 text-2xl bg-blue-600 text-white hover:bg-blue-800 rounded-sm"
         >
           Create Book
         </button>

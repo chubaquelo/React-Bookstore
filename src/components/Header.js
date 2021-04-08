@@ -5,7 +5,9 @@ const Header = ({ title }) => (
   <header className="w-full h-24 px-6 py-25 bg-white flex justify-between">
     <div className="w-8/12 flex flex-row">
       <div className="flex flex-col justify-center mr-10">
-        <h1 className="text-blue-400 text-3xl text-bold font-bold">{title}</h1>
+        <h1 className="text-blue-400 text-3xl text-bold font-bold cursor-pointer">
+          {title}
+        </h1>
       </div>
       <nav className="flex flex-col justify-center mt-2 text-xl">
         <ul className="flex flex-row">
