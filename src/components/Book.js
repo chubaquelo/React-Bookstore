@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Book({
+const Book = ({
   id, title, category, removeBook,
-}) {
-  return (
-    <>
-      <td>{id}</td>
-      <td>{title}</td>
-      <td>{category}</td>
-      <td><button type="button" onClick={() => removeBook(id)}>Remove Book</button></td>
-    </>
-  );
-}
+}) => (
+  <>
+    <td>{id}</td>
+    <td>{title}</td>
+    <td>{category}</td>
+    <td><button type="button" onClick={() => removeBook(id)}>Remove Book</button></td>
+  </>
+);
+
+export default Book;
 
 Book.defaultProps = {
   id: 0,

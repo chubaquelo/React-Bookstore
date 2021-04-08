@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Book from './Book';
+import Book from '../components/Book';
 import { removeBook } from '../actions';
 
-function BooksList({ bookData, dispatch }) {
+const BooksList = ({ bookData, dispatch }) => {
   function removeThisBook(id) {
     dispatch(removeBook(id));
   }
@@ -34,13 +34,11 @@ function BooksList({ bookData, dispatch }) {
       </table>
     </div>
   );
-}
+};
 
-function mapStateToProps(state) {
-  return {
-    bookData: state.bookReducer,
-  };
-}
+const mapStateToProps = state => ({
+  bookData: state.bookReducer,
+});
 
 BooksList.propTypes = {
   bookData: PropTypes.oneOfType(['string', 'array', 'object']),
