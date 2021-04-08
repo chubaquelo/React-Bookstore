@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Book = ({
   id, title, category, removeBook,
@@ -30,9 +32,27 @@ const Book = ({
         </div>
       </div>
       <div className="flex flex-col justify-center text-center">
-        <p className="text-3xl">
-          {readPercentage}
-          %
+        <p className="text-3xl w-20 h-20 mx-auto mb-2">
+          <CircularProgressbar
+            value={readPercentage}
+            text={`${readPercentage}%`}
+            styles={{
+              trail: {
+                // Trail color
+                stroke: '#fff',
+              },
+              // Customize the text
+              text: {
+                // Text color
+                fill: '#2364ea',
+                // Text size
+                fontSize: '28px',
+              },
+              path: {
+                stroke: '#2364ea',
+              },
+            }}
+          />
         </p>
         <p className="text-gray-400 text-sm">
           {Number(readPercentage) < 75 ? 'Uncompleted' : 'Almost Completed!'}
