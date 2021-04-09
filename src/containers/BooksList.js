@@ -15,14 +15,14 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
     : book.category === filterData));
 
   const books = filteredBookData.map(book => (
-    <tr key={book.id}>
+    <div key={book.id}>
       <Book
         id={book.id}
         title={book.title}
         category={book.category}
         removeBook={removeThisBook}
       />
-    </tr>
+    </div>
   ));
 
   const handleFilter = ({ target }) => {
@@ -32,16 +32,9 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
   return (
     <div>
       <CategoryFilter handleFilter={handleFilter} />
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th>Book ID</th>
-            <th>Title</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody>{books}</tbody>
-      </table>
+      <section className="w-11/12 mx-auto">
+        {books}
+      </section>
     </div>
   );
 };

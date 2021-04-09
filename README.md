@@ -1,6 +1,8 @@
 # React Bookstore
 
-Magic-books Inc. is a fictional company based in Germany. We build the front-end of an application that helps to organize and manage a bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build it with React & Redux.
+Magic-books Inc. is a fictional company based in Germany. We built the front-end of an application that helps to organize and manage a bookstore, according to their request. They wanted the website app to be fast, dynamic, and responsive to their actions and therefore we decided to build it with React & Redux.
+
+![Screenshot](https://i.imgur.com/tU0SCMo.gif)
 
 
 ## LIVE DEMO
@@ -16,6 +18,32 @@ Magic-books Inc. is a fictional company based in Germany. We build the front-end
 - Jest
 - NPM
 - ESLINT + Stylelint
+
+## Mobile Responsive Layout
+
+<img src="https://i.imgur.com/AbRq6AS.gif" width="420px" />
+
+## Prerequisites
+
+### Setup
+
+To set this project up locally, follow these simple instructions:
+
+1. Open a Terminal and navigate to the location in your system where you would like to download the project. **New to Terminal? [Learn here](https://www.freecodecamp.org/news/conquering-the-command-line-f85f5e46c07c/).**
+
+2. Enter the following line of code to clone this repository:
+
+`git clone https://github.com/chubaquelo/React-Bookstore`
+
+3. Now that the repository has been cloned, navigate inside it using `cd React-Bookstore`.
+
+4. The project's dependencies are managed by npm. To install them, enter the following line of code in the Terminal.
+
+`npm install`
+
+5. Congratulations! All necessary files have been installed. To run the website on your local server, just type 
+
+`npm start`
 
 
 ## Available Scripts
@@ -50,7 +78,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - Twitter: [@sergioobolevich](https://twitter.com/SergioObolevich)
 - Linkedin: [sergio-obolevich](https://www.linkedin.com/in/sergio-obolevich/)
 
-👤 **Sergio Obolevich**
+👤 **Esteban Pinczinger**
 
 - Github: [@epinczinger](https://github.com/epinczinger)
 - Linkedin: [esteban-pinczinger](https://www.linkedin.com/in/esteban-pinczinger/)

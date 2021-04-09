@@ -5,11 +5,10 @@ import Header from './Header';
 
 const App = () => (
   <>
-    <Header />
-    <div>
-      <h1 className="text-4xl">Hi!</h1>
-      <BooksForm />
+    <Header title="Bookstore CMS" />
+    <div className="bg-gray-100 font-serif">
       <BooksList />
+      <BooksForm />
     </div>
   </>
 );
