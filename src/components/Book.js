@@ -11,6 +11,10 @@ const Book = ({
   const updateProgress = () => {
     setReadPercentage(Math.floor(Math.random() * 100));
   };
+
+  const notWorkingAlert = () => {
+
+  };
   return (
     <div className="flex flex-col border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
       <div className="mx-auto md:text-left text-center">
@@ -22,13 +26,21 @@ const Book = ({
           Author Name
         </span>
         <div className="hidden md:block divide-x text-blue-400 text-sm">
-          <button className="px-2" type="button">
+          <button
+            className="px-2"
+            type="button"
+            onClick={() => notWorkingAlert}
+          >
             Edit
           </button>
           <button className="px-2" type="button" onClick={() => removeBook(id)}>
             Remove Book
           </button>
-          <button className="px-2" type="button">
+          <button
+            className="px-2"
+            type="button"
+            onClick={() => notWorkingAlert}
+          >
             Comments
           </button>
         </div>
