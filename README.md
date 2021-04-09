@@ -1,6 +1,8 @@
 # React Bookstore
 
-Magic-books Inc. is a fictional company based in Germany. We build the front-end of an application that helps to organize and manage a bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build it with React & Redux.
+Magic-books Inc. is a fictional company based in Germany. We built the front-end of an application that helps to organize and manage a bookstore, according to their request. They wanted the website app to be fast, dynamic, and responsive to their actions and therefore we decided to build it with React & Redux.
+
+![Screenshot](https://i.imgur.com/tU0SCMo.gif)
 
 
 ## LIVE DEMO
@@ -50,7 +52,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - Twitter: [@sergioobolevich](https://twitter.com/SergioObolevich)
 - Linkedin: [sergio-obolevich](https://www.linkedin.com/in/sergio-obolevich/)
 
-👤 **Sergio Obolevich**
+👤 **Esteban Pinczinger**
 
 - Github: [@epinczinger](https://github.com/epinczinger)
 - Linkedin: [esteban-pinczinger](https://www.linkedin.com/in/esteban-pinczinger/)
