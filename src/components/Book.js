@@ -12,14 +12,16 @@ const Book = ({
     setReadPercentage(Math.floor(Math.random() * 100));
   };
   return (
-    <div className="border rounded-md bg-white hover:border-blue w-3/4 m-auto my-4 p-5 grid grid-cols-4 gap-5">
-      <div className="col-span-2">
+    <div className="flex flex-col border rounded-md bg-white hover:border-blue w-3/4 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
+      <div className="mx-auto md:text-left text-center">
         <span className="text-gray-500 font-sans text-sm font-bold">
           {category}
         </span>
         <h3 className="text-gray-900 font-extrabold text-3xl">{title}</h3>
-        <span className="text-blue-300">Author Name</span>
-        <div className="divide-x text-blue-400 text-sm">
+        <span className="text-blue-300 text-center md:text-left">
+          Author Name
+        </span>
+        <div className="hidden md:block divide-x text-blue-400 text-sm">
           <button className="px-2" type="button">
             Edit
           </button>
@@ -31,21 +33,17 @@ const Book = ({
           </button>
         </div>
       </div>
-      <div className="flex flex-col justify-center text-center">
-        <p className="text-3xl w-20 h-20 mx-auto mb-2">
+      <div className="flex flex-col mx-auto justify-center text-center">
+        <p className="text-3xl md:w-20 md:h-20 w-24 h-24 mx-auto mb-2">
           <CircularProgressbar
             value={readPercentage}
             text={`${readPercentage}%`}
             styles={{
               trail: {
-                // Trail color
                 stroke: '#fff',
               },
-              // Customize the text
               text: {
-                // Text color
                 fill: '#2364ea',
-                // Text size
                 fontSize: '28px',
               },
               path: {
@@ -54,18 +52,18 @@ const Book = ({
             }}
           />
         </p>
-        <p className="text-gray-400 text-sm">
+        <p className="text-gray-400 text-lg md:text-sm">
           {Number(readPercentage) < 75 ? 'Uncompleted' : 'Almost Completed!'}
         </p>
       </div>
-      <div className="p-2 flex flex-col justify-between">
-        <div>
-          <p className="text-gray-600 uppercase text-sm">Current Chapter</p>
-          <p>Chapter 3</p>
-        </div>
+      <div className="hidden md:flex flex-col mx-auto justify-center">
+        <p className="text-gray-600 uppercase text-sm">Current Chapter</p>
+        <p>Chapter 3</p>
+      </div>
+      <div className="p-2 flex mx-auto items-center">
         <div>
           <button
-            className=" py-1 px-4 bg-blue-600 text-gray-200 hover:text-white hover:bg-blue-800 rounded-sm uppercase font-thin"
+            className="py-1 px-4 h-11 md:h-auto bg-blue-600 text-gray-200 hover:text-white hover:bg-blue-800 rounded-sm uppercase font-thin"
             type="button"
             onClick={updateProgress}
           >
