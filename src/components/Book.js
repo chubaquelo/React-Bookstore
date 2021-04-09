@@ -7,16 +7,26 @@ const Book = ({
   id, title, category, removeBook,
 }) => {
   const [readPercentage, setReadPercentage] = useState(Math.floor(Math.random() * 100));
+  const [displayAlert, setDisplayAlert] = useState(false);
 
   const updateProgress = () => {
     setReadPercentage(Math.floor(Math.random() * 100));
   };
 
   const notWorkingAlert = () => {
-
+    setDisplayAlert(true);
+    setTimeout(() => setDisplayAlert(false), 1500);
   };
+
+  const alertBox = (
+    <div className="absolute bottom-0 flex items-center right-0 h-full w-full bg-red-400 border rounded-tl-md border-l-blue-800">
+      <p className="mx-auto text-white text-4xl text-center">It wont work!</p>
+    </div>
+  );
+
   return (
-    <div className="flex flex-col border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
+    <div className="flex flex-col relative border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
+      { displayAlert ? alertBox : null }
       <div className="mx-auto md:text-left text-center">
         <span className="text-gray-500 font-sans text-sm font-bold">
           {category}
@@ -29,7 +39,7 @@ const Book = ({
           <button
             className="px-2"
             type="button"
-            onClick={() => notWorkingAlert}
+            onClick={notWorkingAlert}
           >
             Edit
           </button>
@@ -39,7 +49,7 @@ const Book = ({
           <button
             className="px-2"
             type="button"
-            onClick={() => notWorkingAlert}
+            onClick={notWorkingAlert}
           >
             Comments
           </button>
