@@ -19,6 +19,9 @@ Magic-books Inc. is a fictional company based in Germany. We built the front-end
 - NPM
 - ESLINT + Stylelint
 
+## Mobile Responsive Layout
+
+<img src="https://i.imgur.com/AbRq6AS.gif" width="420px" />
 
 ## Prerequisites
 
