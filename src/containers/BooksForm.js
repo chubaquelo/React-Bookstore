@@ -39,25 +39,29 @@ const BooksForm = ({ dispatch }) => {
       <hr className="my-8" />
       <h3 className="text-gray-400 text-2xl font-bold font-sans mb-4">
         ADD NEW BOOK
-        {isNoNameError
-          ? (
-            <span className="ml-5 text-red-400">
-              MUST ADD A TITLE FOR YOUR BOOK!
-            </span>
-          ) : null}
+        {isNoNameError ? (
+          <span className="hidden md:inline-block ml-5 text-red-400">
+            MUST ADD A TITLE FOR YOUR BOOK!
+          </span>
+        ) : null}
       </h3>
-      <form className="flex flex-row justify-between">
+      {isNoNameError ? (
+        <p className="md:hidden text-red-400">
+          MUST ADD A TITLE FOR YOUR BOOK!
+        </p>
+      ) : null}
+      <form className="flex flex-col md:flex-row justify-center md:justify-between">
         <input
           placeholder="Input your book name..."
           onChange={handleChange}
           value={title}
-          className="w-7/12 h-11 text-gray-800 text-2xl px-3 rounded-md border"
+          className="mb-4 md-mb-0 w-11/12 md:w-7/12 h-11 text-gray-800 text-2xl px-3 rounded-md border"
         />
         <select
           placeholder="Category"
           value={category}
           onChange={handleSelect}
-          className="w-2/12 text-2xl cursor-pointer"
+          className="mb-4 md-mb-0 w-11/12 md:w-2/12 h-11 border rounded-md text-2xl cursor-pointer"
         >
           <option value="1" className="text-lg" selected disabled>
             Select a Category...
@@ -67,7 +71,7 @@ const BooksForm = ({ dispatch }) => {
         <button
           type="button"
           onClick={handleSubmit}
-          className="w-2/12 text-2xl bg-blue-600 text-white hover:bg-blue-800 rounded-sm"
+          className="w-11/12 md:w-2/12 h-11 text-2xl bg-blue-600 text-white hover:bg-blue-800 rounded-sm"
         >
           Create Book
         </button>
