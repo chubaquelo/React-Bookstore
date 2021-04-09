@@ -35,7 +35,7 @@ const BooksForm = ({ dispatch }) => {
   };
 
   return (
-    <div className="bg-gray-100 font-serif w-9/12 mx-auto p-5 pb-24">
+    <div className="bg-gray-100 font-serif w-11/12 md:w-9/12 mx-auto p-5 pb-24">
       <hr className="my-8" />
       <h3 className="text-gray-400 text-2xl font-bold font-sans mb-4">
         ADD NEW BOOK
