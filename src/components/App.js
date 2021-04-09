@@ -5,7 +5,7 @@ import Header from './Header';
 
 const App = () => (
   <>
-    <Header />
+    <Header title="Bookstore CMS" />
     <div className="bg-gray-100 font-serif">
       <BooksList />
       <BooksForm />
