@@ -12,7 +12,7 @@ const Book = ({
     setReadPercentage(Math.floor(Math.random() * 100));
   };
   return (
-    <div className="flex flex-col border rounded-md bg-white hover:border-blue w-3/4 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
+    <div className="flex flex-col border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
       <div className="mx-auto md:text-left text-center">
         <span className="text-gray-500 font-sans text-sm font-bold">
           {category}
@@ -63,7 +63,7 @@ const Book = ({
       <div className="p-2 flex mx-auto items-center">
         <div>
           <button
-            className="py-1 px-4 h-11 md:h-auto bg-blue-600 text-gray-200 hover:text-white hover:bg-blue-800 rounded-sm uppercase font-thin"
+            className="py-1 px-4 h-11 leading-none bg-blue-600 text-gray-200 hover:text-white hover:bg-blue-800 rounded-sm uppercase font-thin"
             type="button"
             onClick={updateProgress}
           >

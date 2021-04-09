@@ -9,7 +9,7 @@ const Header = ({ title }) => (
           {title}
         </h1>
       </div>
-      <nav className="flex flex-col justify-center mt-2 text-xl">
+      <nav className="hidden md:flex flex-col justify-center mt-2 text-xl">
         <ul className="flex flex-row">
           <li className="px-5 cursor-pointer">BOOKS</li>
           <li className="px-5 cursor-pointer">CATEGORIES</li>
