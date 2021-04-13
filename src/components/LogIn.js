@@ -17,7 +17,9 @@ const LogIn = () => {
   return (
     <div className="flex flex-row items-center h-88percent">
       <div className="w-11/12 sm:w-full max-w-xs mx-auto pb-16">
-        <h2 className="text-5xl text-center mb-6">Log In!</h2>
+        <h2 className="text-3xl font-medium sm:text-5xl text-center mb-4">
+          Log In!
+        </h2>
         <form className="bg-white shadow-md text-xl rounded px-8 pt-6 pb-8 mb-4">
           <label
             htmlFor="email"
