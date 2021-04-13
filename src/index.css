@@ -21,3 +21,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.h-12percent {
+  height: 12%;
+}
+
+.h-88percent {
+  height: 88%;
+}

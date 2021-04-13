@@ -16,11 +16,11 @@ const Header = ({ title }) => {
     </div>
   );
   return (
-    <header className="relative w-full h-24 px-6 py-25 bg-white flex justify-between">
+    <header className="w-full h-12percent px-6 py-25 bg-white flex justify-between sticky top-0 z-50 shadow-lg">
       {displayAlert ? alertBox : null}
       <div className="w-8/12 flex flex-row">
         <div className="flex flex-col justify-center mr-10">
-          <h1 className="text-blue-400 text-3xl text-bold font-bold cursor-pointer">
+          <h1 className="text-blue-400 text-lg sm:text-xl lg:text-3xl text-bold font-bold cursor-pointer">
             {title}
           </h1>
         </div>
