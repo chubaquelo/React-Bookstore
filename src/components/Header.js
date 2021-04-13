@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Header = ({ title }) => {
   const [displayAlert, setDisplayAlert] = useState(false);
@@ -44,11 +45,11 @@ const Header = ({ title }) => {
       </div>
       <div className="w-4/12 flex flex-row justify-end my-auto">
         <div className="h-12 w-12 rounded-full bg-gray-100 border border-gray-300 text-center flex flex-col justify-center cursor-pointer hover:bg-gray-300">
-          <button type="button" onClick={notWorkingAlert}>
+          <Link to="/login">
             <span role="img" aria-label="profile" className="text-2xl">
               👱🏼
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </header>
