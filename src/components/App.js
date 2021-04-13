@@ -5,6 +5,7 @@ import BooksList from '../containers/BooksList';
 import BooksForm from '../containers/BooksForm';
 import Header from './Header';
 import LogIn from './LogIn';
+import SignUp from './SignUp';
 
 const App = () => (
   <main className="h-screen">
@@ -16,6 +17,9 @@ const App = () => (
       </Route>
       <Route path="/login">
         <LogIn />
+      </Route>
+      <Route path="/signup">
+        <SignUp />
       </Route>
     </Switch>
   </main>
