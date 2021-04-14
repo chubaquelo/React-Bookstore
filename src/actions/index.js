@@ -15,11 +15,11 @@ const signInHeaders = {
 export const addUserBook = (authToken, book) => dispatch => {
   axios({
     method: 'post',
-    url: `${SERVER_URL}/books/${book.id}`,
+    url: `${SERVER_URL}/books`,
     data: {
       title: book.title,
       author: book.author,
-      category_id: book.category,
+      category_id: book.categoryId,
       progress: 0,
     },
     headers: {

@@ -5,6 +5,7 @@ import { addUserBook } from '../actions';
 
 const BooksForm = ({ dispatch }) => {
   const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
   const [isNoNameError, setIsNoNameError] = useState(false);
   const [category, setCategory] = useState('Action');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
@@ -14,9 +15,14 @@ const BooksForm = ({ dispatch }) => {
     </option>
   ));
 
-  const handleChange = ({ target }) => {
-    setIsNoNameError(false);
-    setTitle(target.value);
+  const handleChange = e => {
+    const { value, name } = e.target;
+    if (name === 'title') {
+      setIsNoNameError(false);
+      setTitle(value);
+    } else if (name === 'author') {
+      setAuthor(value);
+    }
   };
 
   const handleSelect = event => {
@@ -39,20 +45,39 @@ const BooksForm = ({ dispatch }) => {
       <hr className="my-8" />
       <h3 className="text-gray-400 text-2xl font-bold font-sans mb-4">
         ADD NEW BOOK
-        {isNoNameError
-          ? (
-            <span className="ml-5 text-red-400">
-              MUST ADD A TITLE FOR YOUR BOOK!
-            </span>
-          ) : null}
+        {isNoNameError ? (
+          <span className="ml-5 text-red-400">
+            MUST ADD A TITLE FOR YOUR BOOK!
+          </span>
+        ) : null}
       </h3>
       <form className="flex flex-row justify-between">
-        <input
-          placeholder="Input your book name..."
-          onChange={handleChange}
-          value={title}
-          className="w-7/12 h-11 text-gray-800 text-2xl px-3 rounded-md border"
-        />
+        <label
+          className="pb-2 block text-gray-700 font-bold mb-2"
+          htmlFor="title"
+        >
+          Title
+          <input
+            placeholder="Input your book name..."
+            onChange={handleChange}
+            value={title}
+            name="title"
+            className="mt-2 h-11 text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </label>
+        <label
+          className="pb-2 block text-gray-700 font-bold mb-2"
+          htmlFor="author"
+        >
+          Author
+          <input
+            placeholder="Input your book's author name..."
+            onChange={handleChange}
+            value={author}
+            name="author"
+            className="mt-2 h-11 text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </label>
         <select
           placeholder="Category"
           value={category}

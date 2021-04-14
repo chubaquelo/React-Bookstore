@@ -10,8 +10,6 @@ import {
 import CategoryFilter from '../components/CategoryFilter';
 
 const BooksList = ({ bookData, dispatch, filterData }) => {
-  // const dispatchTest = useDispatch();
-
   const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MTg1MDQ2NjgsImlhdCI6MTYxODQxODI2OH0.NdkJHQnzZblW1eHXPVS81_4_6H_gyb6cc9BRTwtjnmI';
 
   function removeThisBook(id) {
