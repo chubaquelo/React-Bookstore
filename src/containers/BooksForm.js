@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addBook } from '../actions';
+import { addUserBook } from '../actions';
 
 const BooksForm = ({ dispatch }) => {
   const [title, setTitle] = useState('');
@@ -28,7 +28,7 @@ const BooksForm = ({ dispatch }) => {
       setIsNoNameError(true);
     } else {
       dispatch(
-        addBook({ title, category, id: Math.floor(Math.random() * 1000) }),
+        addUserBook({ title, category, id: Math.floor(Math.random() * 1000) }),
       );
       setTitle('');
     }

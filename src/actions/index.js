@@ -2,11 +2,6 @@ import axios from 'axios';
 
 const SERVER_URL = 'http://localhost:3000';
 
-export const addBook = book => ({
-  type: 'CREATE_BOOK',
-  payload: book,
-});
-
 export const changeFilter = category => ({
   type: 'CHANGE_FILTER',
   payload: category,
@@ -15,6 +10,26 @@ export const changeFilter = category => ({
 const signInHeaders = {
   mode: 'cors',
   Accept: 'application/json',
+};
+
+export const addUserBook = (authToken, book) => dispatch => {
+  axios({
+    method: 'post',
+    url: `${SERVER_URL}/books/${book.id}`,
+    data: {
+      title: book.title,
+      author: book.author,
+      category_id: book.category,
+      progress: 0,
+    },
+    headers: {
+      Accept: 'application/json',
+      Authorization: authToken,
+    },
+  }).then(response => dispatch({
+    type: 'CREATE_USER_BOOK',
+    payload: response,
+  })).catch(error => dispatch({ type: 'CREATE_USER_BOOK_ERROR', payload: error }));
 };
 
 export const signIn = (email, password) => dispatch => {

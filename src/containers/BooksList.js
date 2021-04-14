@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import {
@@ -10,7 +10,7 @@ import {
 import CategoryFilter from '../components/CategoryFilter';
 
 const BooksList = ({ bookData, dispatch, filterData }) => {
-  const dispatchTest = useDispatch();
+  // const dispatchTest = useDispatch();
 
   const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MTg1MDQ2NjgsImlhdCI6MTYxODQxODI2OH0.NdkJHQnzZblW1eHXPVS81_4_6H_gyb6cc9BRTwtjnmI';
 
@@ -20,7 +20,7 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
   }
 
   useEffect(() => {
-    dispatchTest(getUserBooks(AUTH_TOKEN));
+    dispatch(getUserBooks(AUTH_TOKEN));
   }, []);
 
   window.console.log(bookData);

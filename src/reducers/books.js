@@ -13,8 +13,6 @@ const bookReducer = (state = bookData, action) => {
   switch (action.type) {
     case 'GET_USER_BOOKS':
       return action.payload;
-      // window.console.log(action.payload);
-      // break;
     case 'GET_USER_BOOKS_ERROR':
       return action.payload;
     case 'DELETE_USER_BOOK':
@@ -23,9 +21,11 @@ const bookReducer = (state = bookData, action) => {
     case 'DELETE_USER_BOOK_ERROR':
       window.console.log(action.payload);
       break;
-    case 'CREATE_BOOK': {
+    case 'CREATE_USER_BOOK':
       return [...state, action.payload];
-    }
+    case 'CREATE_USER_BOOK_ERROR':
+      window.console.log(action.payload);
+      break;
     default:
       return state;
   }
