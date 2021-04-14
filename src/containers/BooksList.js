@@ -2,29 +2,32 @@ import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { changeFilter, removeBook, getUserBooks } from '../actions';
+import {
+  changeFilter,
+  getUserBooks,
+  deleteUserBook,
+} from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
 
 const BooksList = ({ bookData, dispatch, filterData }) => {
   const dispatchTest = useDispatch();
 
+  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MTg1MDQ2NjgsImlhdCI6MTYxODQxODI2OH0.NdkJHQnzZblW1eHXPVS81_4_6H_gyb6cc9BRTwtjnmI';
+
   function removeThisBook(id) {
-    dispatch(removeBook(id));
+    dispatch(deleteUserBook(AUTH_TOKEN, id));
+    window.location.reload();
   }
 
   useEffect(() => {
-    dispatchTest(
-      getUserBooks(
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTg1MDI1OTcsImlhdCI6MTYxODQxNjE5N30.sWRa0nZTsZpc88BBUh13951dg6cdBV8PbPLX3-7_pec',
-      ),
-    );
+    dispatchTest(getUserBooks(AUTH_TOKEN));
   }, []);
 
-  window.console.log(bookData[0]);
+  window.console.log(bookData);
   let books;
 
-  if (bookData[0] !== undefined) {
-    books = bookData[0].filter(book => (filterData === 'All'
+  if (bookData !== undefined) {
+    books = bookData.filter(book => (filterData === 'All'
       ? true
       : book.category.name === filterData))
       .map(book => (

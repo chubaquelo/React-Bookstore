@@ -7,11 +7,6 @@ export const addBook = book => ({
   payload: book,
 });
 
-export const removeBook = bookId => ({
-  type: 'REMOVE_BOOK',
-  payload: bookId,
-});
-
 export const changeFilter = category => ({
   type: 'CHANGE_FILTER',
   payload: category,
@@ -42,6 +37,20 @@ export const signIn = (email, password) => dispatch => {
 export const signOut = () => ({
   type: 'SIGN_OUT',
 });
+
+export const deleteUserBook = (authToken, bookId) => dispatch => {
+  axios({
+    method: 'delete',
+    url: `${SERVER_URL}/books/${bookId}`,
+    headers: {
+      Accept: 'application/json',
+      Authorization: authToken,
+    },
+  }).then(response => dispatch({
+    type: 'DELETE_USER_BOOK',
+    payload: response,
+  })).catch(error => dispatch({ type: 'DELETE_USER_BOOK_ERROR', payload: error }));
+};
 
 export const getUserBooks = authToken => dispatch => {
   axios({
