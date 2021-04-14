@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../actions';
 
 const LogIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const signInAction = useDispatch(signIn);
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { value, type } = e.target;
@@ -13,7 +17,6 @@ const LogIn = () => {
     }
   };
 
-  const postRequestApi = () => {};
   return (
     <div className="flex flex-row items-center h-88percent">
       <div className="w-11/12 sm:w-full max-w-xs mx-auto pb-16">
@@ -51,7 +54,7 @@ const LogIn = () => {
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={postRequestApi}
+            onClick={() => dispatch(signIn(email, password))}
           >
             LogIn
           </button>

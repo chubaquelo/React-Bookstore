@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router';
 import BooksList from '../containers/BooksList';
 import BooksForm from '../containers/BooksForm';
 import Header from './Header';
-import LogIn from './LogIn';
+import SignIn from './SignIn';
 import SignUp from './SignUp';
 
 const App = () => (
@@ -16,7 +16,7 @@ const App = () => (
         <BooksForm />
       </Route>
       <Route path="/login">
-        <LogIn />
+        <SignIn />
       </Route>
       <Route path="/signup">
         <SignUp />

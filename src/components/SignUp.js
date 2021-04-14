@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { signIn } from '../actions';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -8,7 +6,6 @@ const SignUp = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [passwordMatch, setPasswordMatch] = useState(false);
 
-  const signInAction = useDispatch(signIn);
   // let timeout = null;
 
   const comparePasswords = () => password === passwordConfirmation;
@@ -88,7 +85,7 @@ const SignUp = () => {
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={signInAction}
+            onClick={() => {}}
           >
             SignUp
           </button>
