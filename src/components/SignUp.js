@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import signIn from '../actions'
+import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
