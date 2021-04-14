@@ -23,10 +23,8 @@ export const changeFilter = category => ({
 // });
 
 const signInHeaders = {
-  'Content-Type': 'application/json',
-  mode: 'no-cors',
+  mode: 'cors',
   Accept: 'application/json',
-  'Access-Control-Allow-Origin': '*',
 };
 
 export const signIn = (email, password) => dispatch => {
