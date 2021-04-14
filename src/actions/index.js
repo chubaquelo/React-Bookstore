@@ -17,49 +17,44 @@ export const changeFilter = category => ({
   payload: category,
 });
 
-// export const signIn = (email, password) => ({
-//   type: 'SIGN_IN',
-//   payload: { email, password },
-// });
-
 const signInHeaders = {
   mode: 'cors',
   Accept: 'application/json',
 };
 
 export const signIn = (email, password) => dispatch => {
-  axios.post(`${SERVER_URL}/users/sign_in`, { email, password }, signInHeaders).then(response => dispatch({
-    type: 'SIGN_IN',
-    payload: response,
-  })).catch(error => dispatch({ type: 'SIGN_IN_ERROR', payload: error }));
+  axios({
+    method: 'post',
+    url: `${SERVER_URL}/users/sign_in`,
+    data: {
+      email,
+      password,
+    },
+    headers: signInHeaders,
+  })
+    .then(response => dispatch({
+      type: 'SIGN_IN',
+      payload: response,
+    }))
+    .catch(error => dispatch({ type: 'SIGN_IN_ERROR', payload: error }));
 };
-
-// export const signIn = (email, password) => async dispatch => {
-//   const apiUrl = `${SERVER_URL}/users/sign_in`;
-//   let response;
-//   try {
-//     response = await fetch(apiUrl, {
-//       method: 'POST',
-//       mode: 'no-cors',
-//       redirect: 'follow',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Connection: 'keep-alive',
-//       },
-//       body: JSON.stringify({ email, password }),
-//     });
-//     dispatch({
-//       type: 'SIGN_IN',
-//       payload: response,
-//     });
-//   } catch (e) {
-//     console.log(e, 'desde action');
-//     dispatch({
-//       type: 'SIGN_IN_ERROR',
-//     });
-//   }
-// };
 
 export const signOut = () => ({
   type: 'SIGN_OUT',
 });
+
+export const getUserBooks = authToken => dispatch => {
+  axios({
+    method: 'get',
+    url: `${SERVER_URL}/books`,
+    headers: {
+      Accept: 'application/json',
+      Authorization: authToken,
+    },
+  })
+    .then(response => dispatch({
+      type: 'GET_USER_BOOKS',
+      payload: response.data,
+    }))
+    .catch(error => dispatch({ type: 'GET_USER_BOOKS_ERROR', payload: error }));
+};

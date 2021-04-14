@@ -12,6 +12,14 @@ const bookData = [
 
 const bookReducer = (state = bookData, action) => {
   switch (action.type) {
+    case 'GET_USER_BOOKS':
+      return [...state, action.payload];
+      // window.console.log(action.payload);
+      // break;
+    case 'GET_USER_BOOKS_ERROR':
+      window.console.log('Error when fetching books. (from reducer):');
+      window.console.log(action.payload);
+      break;
     case CREATE_BOOK: {
       return [...state, action.payload];
     }
@@ -21,6 +29,7 @@ const bookReducer = (state = bookData, action) => {
     default:
       return state;
   }
+  return state;
 };
 
 export default bookReducer;

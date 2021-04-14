@@ -1,14 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { changeFilter, removeBook } from '../actions';
+import { changeFilter, removeBook, getUserBooks } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
 
 const BooksList = ({ bookData, dispatch, filterData }) => {
+  const dispatchTest = useDispatch();
+
   function removeThisBook(id) {
     dispatch(removeBook(id));
   }
+
+  useEffect(() => {
+    dispatchTest(
+      getUserBooks(
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTg1MDI1OTcsImlhdCI6MTYxODQxNjE5N30.sWRa0nZTsZpc88BBUh13951dg6cdBV8PbPLX3-7_pec',
+      ),
+    );
+  }, []);
 
   const filteredBookData = bookData.filter(book => (filterData === 'All'
     ? true
