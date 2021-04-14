@@ -7,10 +7,10 @@ const BooksForm = ({ dispatch }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [isNoNameError, setIsNoNameError] = useState(false);
-  const [category, setCategory] = useState('Action');
+  const [category, setCategory] = useState('');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-  const categoryOptions = categories.map(category => (
-    <option key={category} value={category}>
+  const categoryOptions = categories.map((category, index) => (
+    <option key={category} value={index + 1}>
       {category}
     </option>
   ));
@@ -29,14 +29,18 @@ const BooksForm = ({ dispatch }) => {
     setCategory(event.target.value);
   };
 
+  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MTg1MDQ2NjgsImlhdCI6MTYxODQxODI2OH0.NdkJHQnzZblW1eHXPVS81_4_6H_gyb6cc9BRTwtjnmI';
+
   const handleSubmit = () => {
     if (title === '') {
       setIsNoNameError(true);
     } else {
       dispatch(
-        addUserBook({ title, category, id: Math.floor(Math.random() * 1000) }),
+        addUserBook(AUTH_TOKEN, { title, author, category }),
       );
-      setTitle('');
+      // forceUpdate();
+      // setTitle('');
+      // setAuthor('');
     }
   };
 

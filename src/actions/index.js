@@ -12,14 +12,14 @@ const signInHeaders = {
   Accept: 'application/json',
 };
 
-export const addUserBook = (authToken, book) => dispatch => {
+export const addUserBook = (authToken, book = {}) => dispatch => {
   axios({
     method: 'post',
     url: `${SERVER_URL}/books`,
     data: {
       title: book.title,
       author: book.author,
-      category_id: book.categoryId,
+      category_id: book.category,
       progress: 0,
     },
     headers: {

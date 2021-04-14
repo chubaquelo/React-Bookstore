@@ -26,13 +26,9 @@ const Header = ({ title }) => {
         </div>
         <nav className="hidden md:flex flex-col justify-center mt-2 text-xl">
           <ul className="flex flex-row">
-            <button
-              type="button"
-              onClick={notWorkingAlert}
-              className="px-5 cursor-pointer"
-            >
+            <Link to="/">
               BOOKS
-            </button>
+            </Link>
             <button
               type="button"
               onClick={notWorkingAlert}
