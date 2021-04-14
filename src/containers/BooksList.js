@@ -20,20 +20,24 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
     );
   }, []);
 
-  const filteredBookData = bookData.filter(book => (filterData === 'All'
-    ? true
-    : book.category === filterData));
+  window.console.log(bookData[0]);
+  let books;
 
-  const books = filteredBookData.map(book => (
-    <div key={book.id}>
-      <Book
-        id={book.id}
-        title={book.title}
-        category={book.category}
-        removeBook={removeThisBook}
-      />
-    </div>
-  ));
+  if (bookData[0] !== undefined) {
+    books = bookData[0].filter(book => (filterData === 'All'
+      ? true
+      : book.category.name === filterData))
+      .map(book => (
+        <div key={book.id}>
+          <Book
+            id={book.id}
+            title={book.title}
+            category={book.category.name}
+            removeBook={removeThisBook}
+          />
+        </div>
+      ));
+  }
 
   const handleFilter = ({ target }) => {
     dispatch(changeFilter(target.value));
