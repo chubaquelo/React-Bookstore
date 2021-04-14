@@ -5,7 +5,6 @@ import { signIn } from '../actions';
 const LogIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const signInAction = useDispatch(signIn);
   const dispatch = useDispatch();
 
   const handleChange = e => {
