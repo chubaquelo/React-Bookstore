@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOut } from '../actions';
 
 const Header = ({ title }) => {
   const isLoggedIn = useSelector(state => state.session[1]);
+  const authToken = useSelector(state => state.session[0]);
+  const dispatch = useDispatch();
 
   return (
     <header className="w-full h-12percent px-6 py-25 bg-white flex justify-between sticky top-0 z-50 shadow-lg">
@@ -34,11 +37,15 @@ const Header = ({ title }) => {
         )}
 
         {isLoggedIn && (
-          <div className="ml-2 h-12 w-12 rounded-full bg-gray-100 border border-gray-300 text-center flex flex-col justify-center cursor-pointer hover:bg-gray-300">
+          <button
+            type="button"
+            onClick={() => dispatch(signOut(authToken))}
+            className="h-12 w-12 rounded-full bg-gray-100 border border-gray-300 text-center flex flex-col justify-center cursor-pointer hover:bg-gray-300"
+          >
             <span role="img" aria-label="profile" className="text-2xl">
               ❌
             </span>
-          </div>
+          </button>
         )}
       </div>
     </header>

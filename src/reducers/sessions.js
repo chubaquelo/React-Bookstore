@@ -7,6 +7,10 @@ const sessionReducer = (
       return [action.payload, true];
     case 'SIGN_IN_ERROR':
       throw action.payload;
+    case 'SIGN_OUT':
+      return ['', false];
+    case 'SIGN_OUT_ERROR':
+      throw action.payload;
     default:
       return state;
   }

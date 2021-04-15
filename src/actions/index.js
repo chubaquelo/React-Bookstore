@@ -77,9 +77,22 @@ export const signIn = (email, password) => dispatch => {
     .catch(error => dispatch({ type: 'SIGN_IN_ERROR', payload: error }));
 };
 
-export const signOut = () => ({
-  type: 'SIGN_OUT',
-});
+export const signOut = authToken => dispatch => {
+  axios({
+    method: 'delete',
+    url: `${SERVER_URL}/users/sign_out`,
+    headers: {
+      Accept: 'application/json',
+      Authorization: authToken,
+    },
+  }).then(response => {
+    if (response) {
+      dispatch({
+        type: 'SIGN_OUT',
+      });
+    }
+  }).catch(error => dispatch({ type: 'SIGN_OUT_ERROR', payload: error }));
+};
 
 export const deleteUserBook = (authToken, bookId) => dispatch => {
   axios({
