@@ -11,11 +11,14 @@ const App = () => (
   <main className="h-screen">
     <Header />
     <Switch>
-      <Route path="/" exact>
+      <Route path="/books">
         <BooksList />
         <BooksForm />
       </Route>
       <Route path="/login">
+        <SignIn />
+      </Route>
+      <Route path="/" exact>
         <SignIn />
       </Route>
       <Route path="/signup">

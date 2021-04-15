@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signIn } from '../actions';
 
 const LogIn = () => {
@@ -30,7 +30,7 @@ const LogIn = () => {
 
   return (
     <div className="flex flex-row items-center h-88percent">
-      {isLoggedIn && <Redirect to="/" />}
+      {isLoggedIn && <Redirect to="/books" />}
       <div className="w-11/12 sm:w-full max-w-xs mx-auto pb-16">
         <h2 className="text-3xl font-medium sm:text-5xl text-center mb-4">
           Log In!
@@ -64,6 +64,7 @@ const LogIn = () => {
               value={password}
             />
           </label>
+          <Link to="/signup"><p>Need an account?</p></Link>
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"

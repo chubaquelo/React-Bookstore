@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -12,10 +13,6 @@ const SignUp = () => {
 
   const checkPasswordMatch = () => {
     setPasswordMatch(comparePasswords());
-    // clearTimeout(timeout);
-    // timeout = setTimeout(() => {
-    //   setPasswordMatch(comparePasswords());
-    // }, 1000);
   };
 
   const handleChange = e => {
@@ -82,6 +79,9 @@ const SignUp = () => {
               Your password does not match.
             </p>
           ) : null}
+          <Link to="/login">
+            <p>Already have an account?</p>
+          </Link>
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"

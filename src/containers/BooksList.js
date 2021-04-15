@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Book from '../components/Book';
 import {
   changeFilter,
@@ -51,6 +52,7 @@ const BooksList = () => {
 
   return (
     <div>
+      {!isLoggedIn && <Redirect to="/" />}
       {isLoggedIn && (
         <>
           <CategoryFilter handleFilter={handleFilter} />
