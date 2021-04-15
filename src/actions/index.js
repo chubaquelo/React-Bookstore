@@ -77,6 +77,27 @@ export const signIn = (email, password) => dispatch => {
     .catch(error => dispatch({ type: 'SIGN_IN_ERROR', payload: error }));
 };
 
+export const signUp = (email, password) => dispatch => {
+  axios({
+    method: 'post',
+    url: `${SERVER_URL}/users/sign_up`,
+    data: {
+      email,
+      password,
+    },
+    headers: signInHeaders,
+  })
+    .then(response => {
+      if (typeof response.headers['access-token'] === 'string') {
+        dispatch({
+          type: 'SIGN_UP',
+          payload: response.headers['access-token'],
+        });
+      }
+    })
+    .catch(error => dispatch({ type: 'SIGN_UP_ERROR', payload: error }));
+};
+
 export const signOut = authToken => dispatch => {
   axios({
     method: 'delete',
