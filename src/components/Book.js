@@ -72,7 +72,7 @@ const Book = ({
       </div>
       <div className="hidden md:flex flex-col mx-auto justify-center">
         <p className="text-gray-600 uppercase text-sm">Current Chapter</p>
-        <p>Chapter 3</p>
+        <p>{`Chapter ${Math.floor(Math.random() * 10)}`}</p>
       </div>
       <div className="p-2 flex mx-auto items-center">
         <div>
