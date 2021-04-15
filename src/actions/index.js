@@ -66,10 +66,14 @@ export const signIn = (email, password) => dispatch => {
     },
     headers: signInHeaders,
   })
-    .then(response => dispatch({
-      type: 'SIGN_IN',
-      payload: response,
-    }))
+    .then(response => {
+      if (typeof response.headers['access-token'] === 'string') {
+        dispatch({
+          type: 'SIGN_IN',
+          payload: response.headers['access-token'],
+        });
+      }
+    })
     .catch(error => dispatch({ type: 'SIGN_IN_ERROR', payload: error }));
 };
 

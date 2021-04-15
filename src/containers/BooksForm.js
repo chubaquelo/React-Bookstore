@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUserBook } from '../actions';
 
-const BooksForm = ({ dispatch }) => {
+const BooksForm = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const dispatch = useDispatch();
+  const authToken = useSelector(state => state.authToken);
   const [isNoNameError, setIsNoNameError] = useState(false);
   const [category, setCategory] = useState('1');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
@@ -29,15 +30,11 @@ const BooksForm = ({ dispatch }) => {
     setCategory(event.target.value);
   };
 
-  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTg1Mjk5MTEsImlhdCI6MTYxODQ0MzUxMX0.CYFXxda3cqy3-XHhq7tWXXns-tHBvn2m3rVTLWqp_60';
-
   const handleSubmit = () => {
     if (title === '') {
       setIsNoNameError(true);
     } else {
-      dispatch(
-        addUserBook(AUTH_TOKEN, { title, author, category }),
-      );
+      dispatch(addUserBook(authToken, { title, author, category }));
       setTitle('');
       setAuthor('');
     }
@@ -104,12 +101,4 @@ const BooksForm = ({ dispatch }) => {
   );
 };
 
-export default connect(null, null)(BooksForm);
-
-BooksForm.propTypes = {
-  dispatch: PropTypes.func,
-};
-
-BooksForm.defaultProps = {
-  dispatch: () => {},
-};
+export default BooksForm;
