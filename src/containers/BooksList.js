@@ -13,9 +13,10 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
   const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTg1Mjk5MTEsImlhdCI6MTYxODQ0MzUxMX0.CYFXxda3cqy3-XHhq7tWXXns-tHBvn2m3rVTLWqp_60';
 
   function removeThisBook(id) {
-    Promise.all([dispatch(deleteUserBook(AUTH_TOKEN, id))]).then(() => setTimeout(
-      () => dispatch(getUserBooks(AUTH_TOKEN)), 100,
-    ));
+    dispatch(deleteUserBook(AUTH_TOKEN, id));
+    // Promise.all([dispatch(deleteUserBook(AUTH_TOKEN, id))]).then(() =>
+    //   setTimeout(() => dispatch(getUserBooks(AUTH_TOKEN)), 100)
+    // );
   }
 
   useEffect(() => {

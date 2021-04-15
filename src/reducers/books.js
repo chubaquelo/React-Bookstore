@@ -16,8 +16,7 @@ const bookReducer = (state = bookData, action) => {
     case 'GET_USER_BOOKS_ERROR':
       return action.payload;
     case 'DELETE_USER_BOOK':
-      window.console.log(action.payload);
-      break;
+      return state.filter(el => el.id !== action.payload);
     case 'DELETE_USER_BOOK_ERROR':
       window.console.log(action.payload);
       break;

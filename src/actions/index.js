@@ -26,10 +26,14 @@ export const addUserBook = (authToken, book = {}) => dispatch => {
       Accept: 'application/json',
       Authorization: authToken,
     },
-  }).then(response => dispatch({
-    type: 'CREATE_USER_BOOK',
-    payload: response,
-  })).catch(error => dispatch({ type: 'CREATE_USER_BOOK_ERROR', payload: error }));
+  }).then(response => {
+    if (response) {
+      dispatch({
+        type: 'CREATE_USER_BOOK',
+        payload: book,
+      });
+    }
+  }).catch(error => dispatch({ type: 'CREATE_USER_BOOK_ERROR', payload: error }));
 };
 
 export const signIn = (email, password) => dispatch => {
@@ -61,10 +65,14 @@ export const deleteUserBook = (authToken, bookId) => dispatch => {
       Accept: 'application/json',
       Authorization: authToken,
     },
-  }).then(response => dispatch({
-    type: 'DELETE_USER_BOOK',
-    payload: response,
-  })).catch(error => dispatch({ type: 'DELETE_USER_BOOK_ERROR', payload: error }));
+  }).then(response => {
+    if (response) {
+      dispatch({
+        type: 'DELETE_USER_BOOK',
+        payload: bookId,
+      });
+    }
+  }).catch(error => dispatch({ type: 'DELETE_USER_BOOK_ERROR', payload: error }));
 };
 
 export const getUserBooks = authToken => dispatch => {
