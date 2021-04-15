@@ -28,9 +28,28 @@ export const addUserBook = (authToken, book = {}) => dispatch => {
     },
   }).then(response => {
     if (response) {
+      const categories = [
+        'All',
+        'Action',
+        'Biography',
+        'History',
+        'Horror',
+        'Kids',
+        'Learning',
+        'Sci-Fi',
+      ];
+      const modifiedBook = {
+        ...book,
+        id: response.data.id,
+        category: {
+          id: book.category,
+          name: categories[book.category],
+        },
+      };
+      window.console.log(modifiedBook);
       dispatch({
         type: 'CREATE_USER_BOOK',
-        payload: book,
+        payload: modifiedBook,
       });
     }
   }).catch(error => dispatch({ type: 'CREATE_USER_BOOK_ERROR', payload: error }));

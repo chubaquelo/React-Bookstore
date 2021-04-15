@@ -7,7 +7,7 @@ const BooksForm = ({ dispatch }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [isNoNameError, setIsNoNameError] = useState(false);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('1');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
   const categoryOptions = categories.map((category, index) => (
     <option key={category} value={index + 1}>
@@ -88,7 +88,7 @@ const BooksForm = ({ dispatch }) => {
           onChange={handleSelect}
           className="w-2/12 text-2xl cursor-pointer"
         >
-          <option value="1" className="text-lg" disabled>
+          <option value="0" className="text-lg" disabled>
             Select a Category...
           </option>
           {categoryOptions}

@@ -20,7 +20,7 @@ const Book = ({
 
   const alertBox = (
     <div className="absolute bottom-0 flex items-center right-0 h-full w-full bg-red-400 border rounded-tl-md border-l-blue-800">
-      <p className="mx-auto text-white text-4xl text-center">It wont work!</p>
+      <p className="mx-auto text-white text-4xl text-center">Not working yet..</p>
     </div>
   );
 
