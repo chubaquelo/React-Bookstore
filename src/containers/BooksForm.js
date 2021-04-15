@@ -38,9 +38,8 @@ const BooksForm = ({ dispatch }) => {
       dispatch(
         addUserBook(AUTH_TOKEN, { title, author, category }),
       );
-      // forceUpdate();
-      // setTitle('');
-      // setAuthor('');
+      setTitle('');
+      setAuthor('');
     }
   };
 

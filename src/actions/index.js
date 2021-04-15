@@ -41,6 +41,7 @@ export const addUserBook = (authToken, book = {}) => dispatch => {
       const modifiedBook = {
         ...book,
         id: response.data.id,
+        progress: 0,
         category: {
           id: book.category,
           name: categories[book.category],
