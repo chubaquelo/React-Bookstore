@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { signUp } from '../actions';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [passwordMatch, setPasswordMatch] = useState(false);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(state => state.session[1]);
 
-  // let timeout = null;
-
-  const comparePasswords = () => password === passwordConfirmation;
-
-  const checkPasswordMatch = () => {
-    setPasswordMatch(comparePasswords());
-  };
+  const checkPasswordMatch = () => password === passwordConfirmation;
 
   const handleChange = e => {
     const { value, type, name } = e.target;
@@ -23,12 +20,24 @@ const SignUp = () => {
       setPassword(value);
     } else if (name === 'passwordConfirmation') {
       setPasswordConfirmation(value);
-      checkPasswordMatch();
+    }
+  };
+
+  const handleSubmit = () => {
+    if (checkPasswordMatch()) {
+      dispatch(signUp(email, password));
+    }
+  };
+
+  const keyUpSubmitTest = e => {
+    if (e.keyCode === 13) {
+      handleSubmit();
     }
   };
 
   return (
     <div className="flex flex-row items-center h-88percent">
+      {isLoggedIn && <Redirect to="/books" />}
       <div className="w-11/12 sm:w-full max-w-xs mx-auto">
         <h2 className="text-3xl font-medium sm:text-5xl text-center mb-4">
           Sign Up!
@@ -58,6 +67,7 @@ const SignUp = () => {
               name="password"
               type="password"
               onChange={handleChange}
+              onKeyUp={keyUpSubmitTest}
               value={password}
             />
           </label>
@@ -71,10 +81,11 @@ const SignUp = () => {
               name="passwordConfirmation"
               type="password"
               onChange={handleChange}
+              onKeyUp={keyUpSubmitTest}
               value={passwordConfirmation}
             />
           </label>
-          {passwordMatch ? (
+          {!checkPasswordMatch() ? (
             <p className="text-red-500 text-xs italic">
               Your password does not match.
             </p>
@@ -85,7 +96,7 @@ const SignUp = () => {
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={() => {}}
+            onClick={handleSubmit}
           >
             SignUp
           </button>
