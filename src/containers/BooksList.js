@@ -35,7 +35,9 @@ const BooksList = ({ bookData, dispatch, filterData }) => {
           <Book
             id={book.id}
             title={book.title}
+            author={book.author}
             category={book.category.name}
+            progress={book.progress}
             removeBook={removeThisBook}
           />
         </div>

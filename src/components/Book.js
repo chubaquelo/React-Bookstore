@@ -4,9 +4,9 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Book = ({
-  id, title, category, removeBook,
+  id, title, author, category, progress, removeBook,
 }) => {
-  const [readPercentage, setReadPercentage] = useState(Math.floor(Math.random() * 100));
+  const [readPercentage, setReadPercentage] = useState(progress);
   const [displayAlert, setDisplayAlert] = useState(false);
 
   const updateProgress = () => {
@@ -26,31 +26,23 @@ const Book = ({
 
   return (
     <div className="flex flex-col relative border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
-      { displayAlert ? alertBox : null }
-      <div className="mx-auto md:text-left text-center">
-        <span className="text-gray-500 font-sans text-sm font-bold">
-          {category}
-        </span>
+      {displayAlert ? alertBox : null}
+      <div className="ml-4 md:text-left text-center">
+        <p className="text-gray-500 font-sans text-sm font-bold mb-1">
+          {`Category: ${category}`}
+        </p>
         <h3 className="text-gray-900 font-extrabold text-3xl">{title}</h3>
-        <span className="text-blue-300 text-center md:text-left">
-          Author Name
-        </span>
-        <div className="hidden md:block divide-x text-blue-400 text-sm">
-          <button
-            className="px-2"
-            type="button"
-            onClick={notWorkingAlert}
-          >
+        <p className="text-blue-300 text-center md:text-left mt-1">
+          {`Author: ${author}`}
+        </p>
+        <div className="hidden md:block divide-x text-blue-400 text-sm text-left mt-2">
+          <button className="pr-2" type="button" onClick={notWorkingAlert}>
             Edit
           </button>
           <button className="px-2" type="button" onClick={() => removeBook(id)}>
             Remove Book
           </button>
-          <button
-            className="px-2"
-            type="button"
-            onClick={notWorkingAlert}
-          >
+          <button className="px-2" type="button" onClick={notWorkingAlert}>
             Comments
           </button>
         </div>
@@ -102,13 +94,17 @@ export default Book;
 Book.defaultProps = {
   id: 0,
   title: '',
+  author: '',
   category: '',
+  progress: '',
   removeBook: () => {},
 };
 
 Book.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
+  author: PropTypes.string,
   category: PropTypes.string,
+  progress: PropTypes.string,
   removeBook: PropTypes.func,
 };

@@ -20,7 +20,7 @@ const CategoryFilter = ({ handleFilter }) => {
   return (
     <div className="w-11/12 mx-auto text-center pt-4">
       <label htmlFor="categories" name="categories" className="text-xl">
-        Select:
+        Show:
         <select
           name="categories"
           className="h-11 text-xl ml-3 cursor-pointer"
