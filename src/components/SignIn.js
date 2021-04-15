@@ -18,6 +18,16 @@ const LogIn = () => {
     }
   };
 
+  const logInSubmit = () => {
+    dispatch(signIn(email, password));
+  };
+
+  const keyUpSubmitTest = e => {
+    if (e.keyCode === 13) {
+      logInSubmit();
+    }
+  };
+
   return (
     <div className="flex flex-row items-center h-88percent">
       {isLoggedIn && <Redirect to="/" />}
@@ -50,13 +60,14 @@ const LogIn = () => {
               name="password"
               type="password"
               onChange={handleChange}
+              onKeyUp={keyUpSubmitTest}
               value={password}
             />
           </label>
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={() => dispatch(signIn(email, password))}
+            onClick={logInSubmit}
           >
             LogIn
           </button>

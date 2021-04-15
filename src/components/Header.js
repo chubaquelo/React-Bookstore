@@ -42,7 +42,7 @@ const Header = ({ title }) => {
             onClick={() => dispatch(signOut(authToken))}
             className="h-12 w-12 rounded-full bg-gray-100 border border-gray-300 text-center flex flex-col justify-center cursor-pointer hover:bg-gray-300"
           >
-            <span role="img" aria-label="profile" className="text-2xl">
+            <span role="img" aria-label="profile" className="text-2xl mx-auto">
               ❌
             </span>
           </button>

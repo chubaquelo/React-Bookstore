@@ -41,6 +41,12 @@ const BooksForm = () => {
     }
   };
 
+  const keyUpSubmitTest = e => {
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
+
   const form = (
     <div className="bg-gray-100 font-serif w-9/12 mx-auto p-5 pb-24">
       <hr className="my-8" />
@@ -61,6 +67,7 @@ const BooksForm = () => {
           <input
             placeholder="Input your book name..."
             onChange={handleChange}
+            onKeyUp={keyUpSubmitTest}
             value={title}
             name="title"
             className="mt-2 h-11 text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -74,6 +81,7 @@ const BooksForm = () => {
           <input
             placeholder="Input your book's author name..."
             onChange={handleChange}
+            onKeyUp={keyUpSubmitTest}
             value={author}
             name="author"
             className="mt-2 h-11 text-lg shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
