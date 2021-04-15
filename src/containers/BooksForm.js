@@ -6,7 +6,8 @@ const BooksForm = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const dispatch = useDispatch();
-  const authToken = useSelector(state => state.authToken);
+  const authToken = useSelector(state => state.session[0]);
+  const isLoggedIn = useSelector(state => state.session[1]);
   const [isNoNameError, setIsNoNameError] = useState(false);
   const [category, setCategory] = useState('1');
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
@@ -40,7 +41,7 @@ const BooksForm = () => {
     }
   };
 
-  return (
+  const form = (
     <div className="bg-gray-100 font-serif w-9/12 mx-auto p-5 pb-24">
       <hr className="my-8" />
       <h3 className="text-gray-400 text-2xl font-bold font-sans mb-4">
@@ -99,6 +100,8 @@ const BooksForm = () => {
       </form>
     </div>
   );
+
+  return <>{isLoggedIn && form}</>;
 };
 
 export default BooksForm;

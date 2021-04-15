@@ -11,27 +11,26 @@ import CategoryFilter from '../components/CategoryFilter';
 const BooksList = () => {
   const dispatch = useDispatch();
 
-  const authToken = useSelector(state => state.session);
+  const authToken = useSelector(state => state.session[0]);
+  const isLoggedIn = useSelector(state => state.session[1]);
   const bookData = useSelector(state => state.book);
   const filterData = useSelector(state => state.filter);
 
-  console.log(authToken, 'from authToken');
-  console.log(filterData, 'from filterDate');
-  console.log(bookData, 'from bookDate');
   function removeThisBook(id) {
     dispatch(deleteUserBook(authToken, id));
   }
 
   useEffect(() => {
-    dispatch(getUserBooks(authToken));
+    if (isLoggedIn) {
+      dispatch(getUserBooks(authToken));
+    }
   }, []);
 
   let books;
 
   if (bookData !== undefined) {
-    books = bookData.filter(book => (filterData === 'All'
-      ? true
-      : book.category.name === filterData))
+    books = bookData
+      .filter(book => (filterData === 'All' ? true : book.category.name === filterData))
       .map(book => (
         <div key={book.id}>
           <Book
@@ -52,10 +51,12 @@ const BooksList = () => {
 
   return (
     <div>
-      <CategoryFilter handleFilter={handleFilter} />
-      <section className="w-11/12 mx-auto">
-        {books}
-      </section>
+      {isLoggedIn && (
+        <>
+          <CategoryFilter handleFilter={handleFilter} />
+          <section className="w-11/12 mx-auto">{books}</section>
+        </>
+      )}
     </div>
   );
 };
