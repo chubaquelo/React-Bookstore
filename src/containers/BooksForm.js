@@ -29,7 +29,7 @@ const BooksForm = ({ dispatch }) => {
     setCategory(event.target.value);
   };
 
-  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MTg1MDQ2NjgsImlhdCI6MTYxODQxODI2OH0.NdkJHQnzZblW1eHXPVS81_4_6H_gyb6cc9BRTwtjnmI';
+  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTg1Mjk5MTEsImlhdCI6MTYxODQ0MzUxMX0.CYFXxda3cqy3-XHhq7tWXXns-tHBvn2m3rVTLWqp_60';
 
   const handleSubmit = () => {
     if (title === '') {
@@ -88,7 +88,7 @@ const BooksForm = ({ dispatch }) => {
           onChange={handleSelect}
           className="w-2/12 text-2xl cursor-pointer"
         >
-          <option value="1" className="text-lg" selected disabled>
+          <option value="1" className="text-lg" disabled>
             Select a Category...
           </option>
           {categoryOptions}

@@ -10,11 +10,12 @@ import {
 import CategoryFilter from '../components/CategoryFilter';
 
 const BooksList = ({ bookData, dispatch, filterData }) => {
-  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MTg1MDQ2NjgsImlhdCI6MTYxODQxODI2OH0.NdkJHQnzZblW1eHXPVS81_4_6H_gyb6cc9BRTwtjnmI';
+  const AUTH_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTg1Mjk5MTEsImlhdCI6MTYxODQ0MzUxMX0.CYFXxda3cqy3-XHhq7tWXXns-tHBvn2m3rVTLWqp_60';
 
   function removeThisBook(id) {
-    dispatch(deleteUserBook(AUTH_TOKEN, id));
-    window.location.reload();
+    Promise.all([dispatch(deleteUserBook(AUTH_TOKEN, id))]).then(() => setTimeout(
+      () => dispatch(getUserBooks(AUTH_TOKEN)), 100,
+    ));
   }
 
   useEffect(() => {
@@ -60,8 +61,10 @@ const mapStateToProps = state => ({
 });
 
 BooksList.propTypes = {
-  bookData: PropTypes.oneOfType(['string', 'array', 'object']),
-  filterData: PropTypes.oneOfType(['string', 'array', 'object']),
+  bookData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  filterData: PropTypes.oneOfType([
+    PropTypes.string,
+  ]),
   dispatch: PropTypes.func,
 };
 
