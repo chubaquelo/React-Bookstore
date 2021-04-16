@@ -165,3 +165,8 @@ export const localStorageSignIn = token => {
     payload: sessionData,
   });
 };
+
+export const updateBookProgress = bookID => ({
+  type: 'UPDATE_BOOK_PROGRESS',
+  payload: bookID,
+});

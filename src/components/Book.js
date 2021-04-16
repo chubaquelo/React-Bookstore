@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
+import { updateBookProgress } from '../actions';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Book = ({
   id, title, author, category, progress, removeBook,
 }) => {
-  const [readPercentage, setReadPercentage] = useState(progress);
   const [displayAlert, setDisplayAlert] = useState(false);
+  const dispatch = useDispatch();
 
   const updateProgress = () => {
-    setReadPercentage(Math.floor(Math.random() * 100));
+    dispatch(updateBookProgress(id));
   };
 
   const notWorkingAlert = () => {
@@ -47,8 +49,8 @@ const Book = ({
       <div className="flex flex-col mx-auto justify-center text-center">
         <p className="text-3xl sm:w-20 sm:h-20 w-24 h-24 mx-auto mb-2">
           <CircularProgressbar
-            value={readPercentage}
-            text={`${readPercentage}%`}
+            value={progress}
+            text={`${progress}%`}
             styles={{
               trail: {
                 stroke: '#fff',
@@ -64,7 +66,7 @@ const Book = ({
           />
         </p>
         <p className="text-gray-400 text-lg md:text-sm">
-          {Number(readPercentage) < 75 ? 'Uncompleted' : 'Almost Completed!'}
+          {Number(progress) < 75 ? 'Uncompleted' : 'Almost Completed!'}
         </p>
       </div>
       <div className="hidden lg:flex flex-col mx-auto justify-center">
