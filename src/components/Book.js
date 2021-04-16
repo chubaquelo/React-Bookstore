@@ -25,21 +25,18 @@ const Book = ({
   );
 
   return (
-    <div className="flex flex-col relative border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid md:grid-cols-4 gap-5">
+    <div className="flex flex-col relative border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
       {displayAlert ? alertBox : null}
-      <div className="ml-4 md:text-left text-center">
+      <div className="ml-4 sm:text-left text-center">
         <p className="text-gray-500 font-sans text-sm font-bold mb-1">
           {`Category: ${category}`}
         </p>
         <h3 className="text-gray-900 font-extrabold text-3xl">{title}</h3>
-        <p className="text-blue-300 text-center md:text-left mt-1">
+        <p className="text-blue-300 text-center sm:text-left mt-1">
           {`Author: ${author}`}
         </p>
-        <div className="hidden md:block divide-x text-blue-400 text-sm text-left mt-2">
-          <button className="pr-2" type="button" onClick={notWorkingAlert}>
-            Edit
-          </button>
-          <button className="px-2" type="button" onClick={() => removeBook(id)}>
+        <div className="sm:block divide-x text-blue-400 text-sm text-center sm:text-left mt-2">
+          <button className="pr-2" type="button" onClick={() => removeBook(id)}>
             Remove Book
           </button>
           <button className="px-2" type="button" onClick={notWorkingAlert}>
@@ -48,7 +45,7 @@ const Book = ({
         </div>
       </div>
       <div className="flex flex-col mx-auto justify-center text-center">
-        <p className="text-3xl md:w-20 md:h-20 w-24 h-24 mx-auto mb-2">
+        <p className="text-3xl sm:w-20 sm:h-20 w-24 h-24 mx-auto mb-2">
           <CircularProgressbar
             value={readPercentage}
             text={`${readPercentage}%`}
@@ -70,7 +67,7 @@ const Book = ({
           {Number(readPercentage) < 75 ? 'Uncompleted' : 'Almost Completed!'}
         </p>
       </div>
-      <div className="hidden md:flex flex-col mx-auto justify-center">
+      <div className="hidden lg:flex flex-col mx-auto justify-center">
         <p className="text-gray-600 uppercase text-sm">Current Chapter</p>
         <p>{`Chapter ${Math.floor(Math.random() * 10)}`}</p>
       </div>
