@@ -68,6 +68,10 @@ export const signIn = (email, password) => dispatch => {
   })
     .then(response => {
       if (typeof response.headers['access-token'] === 'string') {
+        window.localStorage.setItem(
+          'sessionID',
+          response.headers['access-token'],
+        );
         dispatch({
           type: 'SIGN_IN',
           payload: response.headers['access-token'],
@@ -89,6 +93,10 @@ export const signUp = (email, password) => dispatch => {
   })
     .then(response => {
       if (typeof response.headers['access-token'] === 'string') {
+        window.localStorage.setItem(
+          'sessionID',
+          response.headers['access-token'],
+        );
         dispatch({
           type: 'SIGN_UP',
           payload: response.headers['access-token'],
@@ -108,6 +116,7 @@ export const signOut = authToken => dispatch => {
     },
   }).then(response => {
     if (response) {
+      window.localStorage.clear();
       dispatch({
         type: 'SIGN_OUT',
       });
@@ -147,4 +156,12 @@ export const getUserBooks = authToken => dispatch => {
       payload: response.data,
     }))
     .catch(error => dispatch({ type: 'GET_USER_BOOKS_ERROR', payload: error }));
+};
+
+export const localStorageSignIn = token => {
+  const sessionData = [token, true];
+  return ({
+    type: 'LOCAL_STORAGE_SIGN_IN',
+    payload: sessionData,
+  });
 };
