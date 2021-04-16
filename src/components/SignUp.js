@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import validator from 'validator';
 import { signUp } from '../actions';
 
 const SignUp = () => {
@@ -24,7 +25,7 @@ const SignUp = () => {
   };
 
   const handleSubmit = () => {
-    if (checkPasswordMatch()) {
+    if (validator.isEmail(email) && checkPasswordMatch()) {
       dispatch(signUp(email, password));
     }
   };
@@ -86,12 +87,17 @@ const SignUp = () => {
             />
           </label>
           {!checkPasswordMatch() ? (
-            <p className="text-red-500 text-xs italic">
+            <p className="text-red-500 text-sm italic font-bold">
               Your password does not match.
             </p>
           ) : null}
+          {!validator.isEmail(email) && email !== '' ? (
+            <p className="text-red-500 text-sm italic font-bold">
+              You must use a valid email.
+            </p>
+          ) : null}
           <Link to="/login">
-            <p>Already have an account?</p>
+            <p className="text-blue-400 hover:text-blue-700">Already have an account?</p>
           </Link>
           <button
             className="w-full mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
