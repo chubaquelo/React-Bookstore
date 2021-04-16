@@ -27,6 +27,19 @@ const Book = ({
     </div>
   );
 
+  const progressText = () => {
+    switch (true) {
+      case Number(progress) === 100:
+        return 'Completed!';
+      case Number(progress) > 70:
+        return 'Almost finished!';
+      case Number(progress) === 0:
+        return "You haven't started yet!";
+      default:
+        return 'Uncompleted, Keep reading';
+    }
+  };
+
   return (
     <div className="flex flex-col relative border rounded-md bg-white hover:border-blue w-7/8 sm:w-11/12 m-auto my-4 p-5 grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
       {displayAlert ? alertBox : null}
@@ -66,9 +79,7 @@ const Book = ({
             }}
           />
         </p>
-        <p className="text-gray-400 text-lg md:text-sm">
-          {Number(progress) < 75 ? 'Uncompleted' : 'Almost Completed!'}
-        </p>
+        <p className="text-gray-400 text-lg md:text-sm">{progressText()}</p>
       </div>
       <div className="hidden lg:flex flex-col mx-auto justify-center">
         <p className="text-gray-600 uppercase text-sm">Current Chapter</p>
@@ -77,11 +88,17 @@ const Book = ({
       <div className="p-2 flex mx-auto items-center">
         <div>
           <button
-            className="py-1 px-4 h-11 leading-none bg-blue-600 text-gray-200 hover:text-white hover:bg-blue-800 rounded-sm uppercase font-thin"
+            className={`py-1 px-4 disabled h-11 leading-none text-gray-200 ${
+              Number(progress) === 100
+                ? 'bg-green-600 opacity-50'
+                : 'bg-blue-600 hover:bg-blue-800 hover:text-white '
+            } rounded-sm uppercase font-thin`}
             type="button"
-            onClick={updateProgress}
+            onClick={Number(progress) < 100 ? updateProgress : null}
           >
-            Update Progress
+            {Number(progress) === 100
+              ? 'Completed!'
+              : 'Update progress'}
           </button>
         </div>
       </div>

@@ -33,7 +33,6 @@ const BooksList = () => {
     books = bookData
       .filter(book => (filterData === 'All' ? true : book.category.name === filterData))
       .sort((b, a) => {
-        // (a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
         if (a.id > b.id) {
           return 1;
         }
