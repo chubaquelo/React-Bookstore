@@ -12,19 +12,20 @@ const bookReducer = (state = [], action) => {
       return [...state, action.payload];
     case 'CREATE_USER_BOOK_ERROR':
       throw action.payload;
-    case 'UPDATE_BOOK_PROGRESS':
-    {
-      // const selectedBook = state.filter(book => book.id === action.payload)[0];
-      // selectedBook.progress = (Number(selectedBook.progress) + 5).toString();
-      // console.log(state);
-      // window.console.log(selectedBook.progress);
-      // window.console.log(state.filter(book => book.id === action.payload)[0]);
-      break;
+    case 'UPDATE_BOOK_PROGRESS': {
+      const editedState = [...state];
+      const selectedBook = editedState.filter(
+        book => book.id === action.payload,
+      )[0];
+      selectedBook.progress = (Number(selectedBook.progress) + 5).toString();
+      console.log(editedState);
+      return editedState;
     }
+    case 'UPDATE_BOOK_PROGRESS_ERROR':
+      throw action.payload;
     default:
       return state;
   }
-  return state;
 };
 
 export default bookReducer;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { updateBookProgress } from '../actions';
@@ -10,9 +10,10 @@ const Book = ({
 }) => {
   const [displayAlert, setDisplayAlert] = useState(false);
   const dispatch = useDispatch();
+  const authToken = useSelector(state => state.session[0]);
 
   const updateProgress = () => {
-    dispatch(updateBookProgress(id));
+    dispatch(updateBookProgress(authToken, id, progress));
   };
 
   const notWorkingAlert = () => {

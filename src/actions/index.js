@@ -166,7 +166,25 @@ export const localStorageSignIn = token => {
   });
 };
 
-export const updateBookProgress = bookID => ({
-  type: 'UPDATE_BOOK_PROGRESS',
-  payload: bookID,
-});
+export const updateBookProgress = (authToken, bookID, progress) => dispatch => {
+  axios({
+    method: 'put',
+    url: `${SERVER_URL}/books/${bookID}`,
+    headers: {
+      Accept: 'application/json',
+      Authorization: authToken,
+      mode: 'cors',
+      type: 'UPDATE_BOOK_PROGRESS',
+      progress,
+    },
+  })
+    .then(response => {
+      if (response) {
+        dispatch({
+          type: 'UPDATE_BOOK_PROGRESS',
+          payload: bookID,
+        });
+      }
+    })
+    .catch(error => dispatch({ type: 'UPDATE_BOOK_ERROR', payload: error }));
+};
