@@ -30,7 +30,7 @@ const BooksList = () => {
   let books;
 
   if (bookData !== undefined) {
-    books = bookData
+    books = bookData.reverse()
       .filter(book => (filterData === 'All' ? true : book.category.name === filterData))
       .map(book => (
         <div key={book.id}>

@@ -18,12 +18,16 @@ const CategoryFilter = ({ handleFilter }) => {
     </option>
   ));
   return (
-    <div className="w-11/12 mx-auto text-center pt-4">
-      <label htmlFor="categories" name="categories" className="text-xl">
+    <div className="w-11/12 mx-auto text-center mb-6">
+      <label
+        htmlFor="categories"
+        name="categories"
+        className="text-2xl text-gray-700"
+      >
         Show:
         <select
           name="categories"
-          className="h-11 text-xl ml-3 cursor-pointer"
+          className="ml-3 cursor-pointer w-2/12 h-11 text-2xl px-3 shadow border rounded cursor-pointer bg-white text-gray-700"
           onChange={handleFilter}
         >
           {categoryOptions}

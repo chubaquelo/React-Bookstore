@@ -23,8 +23,8 @@ const App = () => {
       <Header />
       <Switch>
         <Route path="/books">
-          <BooksList />
           <BooksForm />
+          <BooksList />
         </Route>
         <Route path="/login">
           <SignIn />
