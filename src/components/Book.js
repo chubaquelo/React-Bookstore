@@ -23,7 +23,9 @@ const Book = ({
 
   const alertBox = (
     <div className="absolute bottom-0 flex items-center right-0 h-full w-full bg-red-400 border rounded-tl-md border-l-blue-800">
-      <p className="mx-auto text-white text-4xl text-center">Not working yet..</p>
+      <p className="mx-auto text-white text-4xl text-center">
+        Not working yet..
+      </p>
     </div>
   );
 
@@ -38,6 +40,46 @@ const Book = ({
       default:
         return 'Uncompleted, Keep reading';
     }
+  };
+
+  const progressBarColor = () => {
+    const aux = {
+      trail: {
+        stroke: '#fff',
+      },
+      text: {
+        fontSize: '28px',
+      },
+      path: {
+      },
+    };
+    switch (true) {
+      case Number(progress) === 100:
+        aux.text.fill = '#059669';
+        aux.path.stroke = aux.text.fill;
+        break;
+      case Number(progress) > 80:
+        aux.text.fill = '#1E40AF';
+        aux.path.stroke = aux.text.fill;
+        break;
+      case Number(progress) > 60:
+        aux.text.fill = '#1D4ED8';
+        aux.path.stroke = aux.text.fill;
+        break;
+      case Number(progress) > 40:
+        aux.text.fill = '#2563EB';
+        aux.path.stroke = aux.text.fill;
+        break;
+      case Number(progress) > 20:
+        aux.text.fill = '#3B82F6';
+        aux.path.stroke = aux.text.fill;
+        break;
+      default:
+        aux.text.fill = '#93C5FD';
+        aux.path.stroke = aux.text.fill;
+        break;
+    }
+    return aux;
   };
 
   return (
@@ -65,18 +107,7 @@ const Book = ({
           <CircularProgressbar
             value={progress}
             text={`${progress}%`}
-            styles={{
-              trail: {
-                stroke: '#fff',
-              },
-              text: {
-                fill: '#2364ea',
-                fontSize: '28px',
-              },
-              path: {
-                stroke: '#2364ea',
-              },
-            }}
+            styles={progressBarColor()}
           />
         </p>
         <p className="text-gray-400 text-lg md:text-sm">{progressText()}</p>
@@ -96,9 +127,7 @@ const Book = ({
             type="button"
             onClick={Number(progress) < 100 ? updateProgress : null}
           >
-            {Number(progress) === 100
-              ? 'Completed!'
-              : 'Update progress'}
+            {Number(progress) === 100 ? 'Completed!' : 'Update progress'}
           </button>
         </div>
       </div>
