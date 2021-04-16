@@ -18,7 +18,6 @@ const bookReducer = (state = [], action) => {
         book => book.id === action.payload,
       )[0];
       selectedBook.progress = (Number(selectedBook.progress) + 5).toString();
-      console.log(editedState);
       return editedState;
     }
     case 'UPDATE_BOOK_PROGRESS_ERROR':
