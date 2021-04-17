@@ -30,10 +30,10 @@ const App = () => {
           <SignIn />
         </Route>
         <Route path="/" exact>
-          <SignIn />
-        </Route>
-        <Route path="/signup">
           <SignUp />
+        </Route>
+        <Route path="/signin">
+          <SignIn />
         </Route>
       </Switch>
     </main>
