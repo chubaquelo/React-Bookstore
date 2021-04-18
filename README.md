@@ -1,21 +1,37 @@
 # React Bookstore
 
-Magic-books Inc. is a fictional company based in Germany. We build the front-end of an application that helps to organize and manage a bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build it with React & Redux.
+Magic-books Inc. is a fictional company based in Germany. We build the front-end of an application that helps to organize and manage a bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build the frontend with React & Redux. We needed an API Server to manage and store the information, and for that, we have used a Ruby on Rails API server.
 
 
 ## LIVE DEMO
+
+The app is deployed in Heroku.
 [Click Here to See Live Demo](https://bookstore-esteban-sergio.herokuapp.com/)
+
+Our rails backend API server is online in heroku at this address:
+https://esteban-sergio-bookstore-app.herokuapp.com/
+Our Rails Server repository is located at: https://github.com/epinczinger/bookstore-rails-backend
+
+![Screenshot](https://i.imgur.com/tU0SCMo.gif)
 
 ## Built With
 
 - HTML + CSS
+- Responsive Design
 - Tailwind CSS
 - React.js
 - JavaScript, ES6
 - Redux
-- Jest
 - NPM
 - ESLINT + Stylelint
+- React Router
+- React-Redux
+- Ruby on Rails
+- Pair Programming
+
+## Mobile Responsive Layout
+
+<img src="https://i.imgur.com/AbRq6AS.gif" width="420px" />
 
 
 ## Available Scripts
