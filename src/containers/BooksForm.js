@@ -48,8 +48,7 @@ const BooksForm = () => {
   };
 
   const form = (
-    <div className="bg-gray-100 font-sans w-10/12 lg:w-10/12 mx-auto p-4">
-      <hr className="my-8" />
+    <div className="bg-gray-100 font-sans w-10/12 lg:w-10/12 mx-auto p-4 mt-8">
       <h3 className="text-gray-500 text-2xl font-bold font-sans mb-4">
         ADD NEW BOOK
         {isNoNameError ? (

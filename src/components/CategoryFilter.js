@@ -27,7 +27,7 @@ const CategoryFilter = ({ handleFilter }) => {
         Show:
         <select
           name="categories"
-          className="ml-3 cursor-pointer w-2/12 h-11 text-2xl px-3 shadow border rounded cursor-pointer bg-white text-gray-700"
+          className="ml-3 cursor-pointer w-8/12 sm:w-2/12 h-11 text-2xl px-3 shadow border rounded cursor-pointer bg-white text-gray-700"
           onChange={handleFilter}
         >
           {categoryOptions}
