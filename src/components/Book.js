@@ -13,7 +13,9 @@ const Book = ({
   const authToken = useSelector(state => state.session[0]);
 
   const updateProgress = () => {
-    dispatch(updateBookProgress(authToken, id, progress));
+    if (Number(progress) < 100) {
+      dispatch(updateBookProgress(authToken, id, progress));
+    }
   };
 
   const notWorkingAlert = () => {

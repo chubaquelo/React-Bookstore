@@ -72,7 +72,7 @@ const LogIn = () => {
               You must use a valid email.
             </p>
           ) : null}
-          <Link to="/signup">
+          <Link to="/">
             <p className="text-blue-400 hover:text-blue-700">
               Need an account?
             </p>
