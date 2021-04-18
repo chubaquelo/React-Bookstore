@@ -17,7 +17,7 @@ const bookReducer = (state = [], action) => {
       const selectedBook = editedState.filter(
         book => book.id === action.payload,
       )[0];
-      selectedBook.progress = (Number(selectedBook.progress) + 5).toString();
+      selectedBook.progress = selectedBook.progress <= 95 ? (Number(selectedBook.progress) + 5).toString() : '100';
       return editedState;
     }
     case 'UPDATE_BOOK_PROGRESS_ERROR':
