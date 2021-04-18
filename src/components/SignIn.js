@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import validator from 'validator';
-import { signIn } from '../actions';
+import { signIn, resetError } from '../actions';
 
 const LogIn = () => {
   const [email, setEmail] = useState('');
@@ -76,7 +76,7 @@ const LogIn = () => {
           {error !== '' ? (
             <p className="text-red-500 text-sm italic font-bold">{error}</p>
           ) : null}
-          <Link to="/">
+          <Link onClick={() => dispatch(resetError())} to="/">
             <p className="text-blue-400 hover:text-blue-700">
               Need an account?
             </p>

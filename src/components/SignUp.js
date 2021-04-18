@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import validator from 'validator';
-import { signUp } from '../actions';
+import { signUp, resetError } from '../actions';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -100,7 +100,7 @@ const SignUp = () => {
               You must use a valid email.
             </p>
           ) : null}
-          <Link to="/login">
+          <Link onClick={() => dispatch(resetError())} to="/login">
             <p className="text-blue-400 hover:text-blue-700">
               Already have an account?
             </p>

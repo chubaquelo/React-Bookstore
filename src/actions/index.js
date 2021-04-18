@@ -80,9 +80,15 @@ export const signIn = (email, password) => dispatch => {
     })
     .catch(error => {
       if (error.message === 'Request failed with status code 422') {
-        dispatch({ type: 'SIGN_IN_ERROR', payload: 'Account does not exist' });
+        dispatch({ type: 'SIGN_IN_ERROR', payload: 'Invalid Password or Account..' });
       }
     });
+};
+
+export const resetError = () => dispatch => {
+  dispatch({
+    type: 'RESET_SIGN_ERROR',
+  });
 };
 
 export const signUp = (email, password) => dispatch => {
@@ -109,7 +115,7 @@ export const signUp = (email, password) => dispatch => {
     })
     .catch(error => {
       if (error.message === 'Request failed with status code 422') {
-        dispatch({ type: 'SIGN_UP_ERROR', payload: 'Account already exist' });
+        dispatch({ type: 'SIGN_UP_ERROR', payload: 'Account already exists..' });
       }
     });
 };
