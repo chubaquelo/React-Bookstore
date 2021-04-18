@@ -1,18 +1,18 @@
 const sessionReducer = (
-  state = ['', false],
+  state = ['', false, ''],
   action,
 ) => {
   switch (action.type) {
     case 'SIGN_IN':
-      return [action.payload, true];
+      return [action.payload, true, ''];
     case 'SIGN_IN_ERROR':
-      throw action.payload;
+      return ['', false, action.payload];
     case 'SIGN_UP':
-      return [action.payload, true];
+      return [action.payload, true, ''];
     case 'SIGN_UP_ERROR':
-      throw action.payload;
+      return ['', false, action.payload];
     case 'SIGN_OUT':
-      return ['', false];
+      return ['', false, ''];
     case 'SIGN_OUT_ERROR':
       throw action.payload;
     case 'LOCAL_STORAGE_SIGN_IN':

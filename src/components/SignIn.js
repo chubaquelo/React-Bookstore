@@ -8,6 +8,7 @@ const LogIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isLoggedIn = useSelector(state => state.session[1]);
+  const error = useSelector(state => state.session[2]);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -71,6 +72,9 @@ const LogIn = () => {
             <p className="text-red-500 text-sm italic font-bold">
               You must use a valid email.
             </p>
+          ) : null}
+          {error !== '' ? (
+            <p className="text-red-500 text-sm italic font-bold">{error}</p>
           ) : null}
           <Link to="/">
             <p className="text-blue-400 hover:text-blue-700">
