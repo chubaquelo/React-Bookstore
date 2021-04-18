@@ -1,4 +1,4 @@
-# React Bookstore
+# React Bookstore (Frontend)
 
 Magic-books Inc. is a fictional company based in Germany. We build the front-end of an application that helps to organize and manage a bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build the frontend with React & Redux. We needed an API Server to manage and store the information, and for that, we have used a Ruby on Rails API server.
 
