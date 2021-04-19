@@ -12,7 +12,7 @@ Our rails backend API server is online in heroku at this address:
 https://esteban-sergio-bookstore-app.herokuapp.com/
 Our Rails Server repository is located at: https://github.com/epinczinger/bookstore-rails-backend
 
-![Screenshot](https://i.imgur.com/tU0SCMo.gif)
+![Screenshot](https://i.imgur.com/eWiTpAQ.gif)
 
 ## Functionalities
 
@@ -47,7 +47,7 @@ We have also added an instant category filter, so you can only display book from
 
 ## Mobile Responsive Layout
 
-<img src="https://i.imgur.com/AbRq6AS.gif" width="420px" />
+<img src="https://i.imgur.com/hi6BktO.gif" width="420px" />
 
 
 ## Available Scripts
